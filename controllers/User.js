@@ -37,6 +37,7 @@ class UserController {
             .catch(next);
     }
 
+
     static googleSignIn(req, res, next) {
         const { OAuth2Client } = require('google-auth-library')
         const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
@@ -45,8 +46,8 @@ class UserController {
         let data;
         client.verifyIdToken({ idToken: token, audience: GOOGLE_CLIENT_ID })
             .then((ticket) => {
-                const data = ticket.getPayload()
-                const { email } = data
+                data = ticket.getPayload()
+                const email = data.email
                 return User.findOne({ email })
             })
             .then(user => {
