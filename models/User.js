@@ -13,7 +13,8 @@ const UserSchema = new Schema({
                 return new Promise((resolve, reject) => {
                     User.findOne({ email }).then(result => result ? resolve(false) : resolve(true))
                 });
-            }
+            },
+            message: "Email is already taken"
         }
     },
     password: {
