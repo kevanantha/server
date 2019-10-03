@@ -5,14 +5,12 @@ const { compare } = require('../helpers/bcryptjs')
 class UserController {
     static create(req, res, next) {
         User.create({
-            username: req.body.username,
             email: req.body.email,
             password: req.body.password
         })
             .then((User) => {
                 const token = createToken({ id: User._id })
                 res.status(201).json({
-                    username: User.username,
                     email: User.email,
                     token
                 })
@@ -27,12 +25,11 @@ class UserController {
                 if (User && compare(password, User.password)) {
                     const token = createToken({ id: User._id })
                     res.status(200).json({
-                        username: User.username,
                         email: User.email,
                         token
                     })
                 } else {
-                    let err = new Error('Wrong Username / Email / Password')
+                    let err = new Error('Wrong Email / Password')
                     err.name = 'AuthenticationError'
                     next(err)
                 }
@@ -56,7 +53,6 @@ class UserController {
                 if (user) return user
                 else {
                     return User.create({
-                        username: data.family_name,
                         email: data.email,
                         password: process.env.DEFAULT_PASSWORD
                     })
