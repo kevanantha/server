@@ -21,8 +21,8 @@ class UserController {
     }
 
     static login(req, res, next) {
-        const { identity, password } = req.body;
-        User.findOne({ $or: [{ username: identity }, { email: identity }] })
+        const { email, password } = req.body;
+        User.findOne({ email })
             .then((User) => {
                 if (User && compare(password, User.password)) {
                     const token = createToken({ id: User._id })

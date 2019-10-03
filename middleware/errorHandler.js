@@ -5,6 +5,10 @@ module.exports = (err, req, res, next) => {
     let message
 
     switch (err.name) {
+        case 'AuthenticationError':
+            status = 401;
+            message = err.message
+            break;
         case 'ValidationError':
             status = 400
             let arr = []
