@@ -23,6 +23,18 @@ class HomeController{
         next()
       }
     }
+
+  static detail(req, res, next) {
+    console.log(req.body, req.query, req.params)
+    Jikan({
+      method: 'get',
+      url: `anime/${req.params.id}`
+    })
+      .then(({ data }) => {
+        res.status(200).json(data)
+      })
+      .catch(next)
+  }
 }
 
 
