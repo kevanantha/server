@@ -1,7 +1,7 @@
 const Jikan = require('../apis/jikan')
 
-class HomeController{
-    static async upcoming(req, res, next){
+class HomeController {
+    static async upcoming(req, res, next) {
       try {
         const { data: upcoming } = await Jikan({
           method: 'get',
