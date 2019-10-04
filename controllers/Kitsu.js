@@ -45,6 +45,14 @@ class KitsuController {
                 res.status(200).json(data.data)
             }).catch(next);
     }
+
+    static reviews(req, res, next) {
+        const { id } = req.params
+        kitsu.get(`/${id}/reviews?sort=-updatedAt`)
+            .then(({ data }) => {
+                res.status(200).json(data.data)
+            }).catch(next);
+    }
 }
 
 module.exports = KitsuController

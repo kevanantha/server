@@ -8,6 +8,9 @@ Router.get('/seasons', KitsuController.seasonal)
 // * Get Anime by ID
 Router.get('/anime/:id', KitsuController.detail)
 
+// * Get Reviews By ID
+Router.get('/reviews/:id', KitsuController.reviews)
+
 Router.get('/episodes/:id', KitsuController.episodes)
 // * Query Field {q: 'any' }
 Router.get('/', KitsuController.search)
