@@ -5,7 +5,7 @@ class KitsuController {
         const { q } = req.query
         kitsu.get(`?filter[text]=${q}`)
             .then(({ data }) => {
-                res.status(200).json(data)
+                res.status(200).json(data.data)
             }).catch(next);
     }
 
@@ -26,7 +26,7 @@ class KitsuController {
         }
         kitsu.get(`?filter[season]=${season}&filter[seasonYear]=${year}&sort=-popularityRank`)
             .then(({ data }) => {
-                res.status(200).json(data)
+                res.status(200).json(data.data)
             }).catch(next);
     }
 
