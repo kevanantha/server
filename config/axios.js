@@ -7,7 +7,7 @@ const kitsu = axios.create({
 
 const pantsu = axios.create({
     baseURL: 'https://nyaa.pantsu.cat/api/search/',
-    timeout: 5000
+    timeout: 10000
 })
 
 module.exports = { kitsu, pantsu }
