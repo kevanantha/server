@@ -17,7 +17,6 @@ class PantsuController {
             .then(({ data }) => {
                 const arr = []
                 const regex = new RegExp(`^\\[HorribleSubs\\] ${q} - \\d+ \\[${resolution}\\].mkv$`, 'i')
-                console.log(regex)
                 data.torrents.forEach(el => {
                     regex.test(el.name) ? arr.push(el) : ""
                 })
