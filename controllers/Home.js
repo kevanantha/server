@@ -25,7 +25,6 @@ class HomeController{
     }
 
   static detail(req, res, next) {
-    console.log(req.body, req.query, req.params)
     Jikan({
       method: 'get',
       url: `anime/${req.params.id}`
