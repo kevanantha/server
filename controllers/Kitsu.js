@@ -37,6 +37,14 @@ class KitsuController {
                 res.status(200).json(data.data)
             }).catch(next);
     }
+
+    static detail(req, res, next) {
+        const { id } = req.params
+        kitsu.get(`/${id}`)
+            .then(({ data }) => {
+                res.status(200).json(data.data)
+            }).catch(next);
+    }
 }
 
 module.exports = KitsuController
